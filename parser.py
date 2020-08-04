@@ -31,7 +31,7 @@ def main():
     args = get_args()
     # current_dir = os.path.dirname(os.path.realpath(__file__))
     files = parser_files(".")
-    files.remove("./parser.py")
+    files.remove("./" + __file__)  # remove current file from results
 
     desired = list(filter(lambda x: args.key in read_file(x), files))
     for i, file_name in enumerate(desired):
