@@ -1,16 +1,17 @@
 import os
 import argparse
+from typing import List
 
 
-def get_args():
+def get_args() -> object:
     parser = argparse.ArgumentParser(description="Key phrase search")
     parser.add_argument("-k", "--key", required=True, type=str,
                         help='Phrase to search for')
     return parser.parse_args()
 
 
-def parser_files(d):
-    fs = list()
+def parser_files(d: str) -> List[str]:
+    fs: List[str] = list()
     for f in os.listdir(d):
         file_name = d + "/" + f
         if os.path.isfile(file_name):
@@ -20,7 +21,7 @@ def parser_files(d):
     return fs
 
 
-def read_file(file):
+def read_file(file: str) -> str:
     f = open(file, "r")
     text = f.read()
     f.close()
@@ -29,11 +30,16 @@ def read_file(file):
 
 def main():
     args = get_args()
+    # args = <class 'argparse.Namespace'>
+
     # current_dir = os.path.dirname(os.path.realpath(__file__))
-    files = parser_files(".")
+    files: List[str] = parser_files(".")
     files.remove("./" + __file__)  # remove current file from results
 
-    desired = list(filter(lambda x: args.key in read_file(x), files))
+    desired: List[str]
+    desired = list(filter(
+        lambda x: args.key in read_file(x), files))
+
     for i, file_name in enumerate(desired):
         print("\t{} - {}".format(i+1, file_name))
 
