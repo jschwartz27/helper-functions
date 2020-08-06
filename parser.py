@@ -36,8 +36,7 @@ def main():
     files: List[str] = parser_files(".")
     files.remove("./" + __file__)  # remove current file from results
 
-    desired: List[str]
-    desired = list(filter(
+    desired: List[str] = list(filter(
         lambda x: args.key in read_file(x), files))
 
     for i, file_name in enumerate(desired):
