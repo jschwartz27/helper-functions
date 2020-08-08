@@ -7,6 +7,8 @@ def get_args() -> object:
     parser = argparse.ArgumentParser(description="Key phrase search")
     parser.add_argument("-k", "--key", required=True, type=str,
                         help='Phrase to search for')
+    parser.add_argument("-c", "--context", required=False, type=bool,
+                        help='Context window')
     return parser.parse_args()
 
 
@@ -21,7 +23,7 @@ def parser_files(d: str) -> List[str]:
     return fs
 
 
-def read_file(file: str) -> str:
+def read_file(file: str, context: bool) -> str:
     f = open(file, "r")
     text = f.read()
     f.close()
@@ -37,7 +39,7 @@ def main():
     files.remove("./" + __file__)  # remove current file from results
 
     desired: List[str] = list(filter(
-        lambda x: args.key in read_file(x), files))
+        lambda x: args.key in read_file(x, args.context), files))
 
     for i, file_name in enumerate(desired):
         print("\t{} - {}".format(i+1, file_name))
