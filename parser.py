@@ -9,6 +9,7 @@ def get_args() -> object:
                         help='Phrase to search for')
     parser.add_argument("-c", "--context", required=False, type=bool,
                         help='Context window')
+    # caps on caps off option
     return parser.parse_args()
 
 
@@ -41,8 +42,12 @@ def main():
     desired: List[str] = list(filter(
         lambda x: args.key in read_file(x, args.context), files))
 
-    for i, file_name in enumerate(desired):
-        print("\t{} - {}".format(i+1, file_name))
+    print()
+    if len(desired) == 0:
+        print("\tNo files found containing your query...")
+    else:
+        for i, file_name in enumerate(desired):
+            print("\t{} - {}".format(i+1, file_name))
 
 if __name__ == '__main__':
     main()
