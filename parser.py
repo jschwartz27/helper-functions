@@ -16,8 +16,10 @@ def get_args() -> object:
 def parser_files(d: str) -> List[str]:
     fs: List[str] = list()
     for f in os.listdir(d):
-        file_name = d + "/" + f
-        if os.path.isfile(file_name):
+        file_name = d + "\\" + f
+        if ".gif" in file_name:
+            continue
+        elif os.path.isfile(file_name):
             fs.append(file_name)
         else:
             fs.extend(parser_files(file_name))
