@@ -4,8 +4,8 @@ import yaml
 
 
 def load_yml(filename: str):
-    with open(filename + ".yaml") as stream:
-        return yaml.load(stream, Loader=yaml.FullLoader)
+    with open(filename + ".yaml") as file:
+        return yaml.load(file, Loader=yaml.FullLoader)
 
 
 def save_yml(data, filename: str) -> None:
