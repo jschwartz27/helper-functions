@@ -53,3 +53,11 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+'''
+# TODO parser must simply ignore all non-text files
+# TODO case sensitive
+# TODO context function
+    - print line before and line after
+# TODO if result len == 1 simply open the file
+'''
