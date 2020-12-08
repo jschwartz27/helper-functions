@@ -25,3 +25,17 @@ def load_json(filename: str):
 def save_json(data, filename: str) -> None:
     with open(filename + ".json", 'w') as file:
         json.dump(data, file, indent=4)  # sort_keys=True ensure_ascii=False
+
+
+### CSV FUNCTIONS ###
+import csv
+
+def load_csv(filename: str):
+    csv_return = list()
+    with open(filename + ".csv") as file:
+        list(map(
+            lambda x: csv_return.append(x), csv.reader(file)))
+
+
+def save_csv(data, filename: str) -> None:
+    pass
