@@ -18,12 +18,12 @@ import json
 
 
 def load_json(filename: str):
-    with open(filename + ".json") as file:
+    with open(filename + ".json", encoding="utf-8") as file:
         return json.load(file)
 
 
 def save_json(data, filename: str) -> None:
-    with open(filename + ".json", 'w') as file:
+    with open(filename + ".json", 'w', encoding="utf-8") as file:
         json.dump(data, file, indent=4)  # sort_keys=True ensure_ascii=False
 
 
