@@ -8,9 +8,9 @@ def load_yml(filename: str):
         return yaml.load(file, Loader=yaml.FullLoader)
 
 
-def save_yml(data, filename: str) -> None:
+def save_yaml(data, filename: str, sort_keys=False) -> None:
     with open(r'{}.yaml'.format(filename), 'w') as file:
-        yaml.dump(data, file)
+        yaml.dump(data, file, sort_keys=sort_keys)
 
 
 ### JSON FUNCTIONS ###
